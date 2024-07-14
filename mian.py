@@ -333,8 +333,8 @@ class main():
                 elif view == 3:
                     member.select()
 
-                    
-                            
+
+
         elif first_move == 2:
             print('add data --> 1')
             print('update data --> 2')
@@ -374,5 +374,7 @@ class main():
 
 a = main()
 a.__init__
-
-
+b = input('bezan : ')
+if b == 'yes':
+    b = main()
+    b.__init__
