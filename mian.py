@@ -32,7 +32,7 @@ class book():
     def vorodi():
         name = input('Enter the book name : ')
         writer = input('Enter the writer name : ')
-        year = input('Enter the published yera : ')
+        year = input('Enter the published year : ')
         ct.cur.execute(
             """INSERT INTO book(name , writer , year) VALUES(? , ? , ?)""",
             (name , writer , year)
@@ -90,7 +90,38 @@ class book():
             )
         ct.db.commit()
         ct.db.close()        
-
+    def select():
+        print('What do you want to view : ')
+        print('name --> 1')
+        print('writer --> 2')
+        print('year --> 3')
+        print('all --> 4')
+        select = int(input('Enter the number(1/2/3/4) : '))
+        os.system('cls')
+        if select == 1:
+            res = ct.cur.execute(
+                """SELECT name FROM book"""
+            )
+            for i in res:
+                print(i)
+        if select == 2:
+            res = ct.cur.execute(
+                """SELECT writer FROM book"""
+            )
+            for i in res:
+                print(i)        
+        if select == 3:
+            res = ct.cur.execute(
+                """SELECT year FROM book"""
+            )
+            for i in res:
+                print(i)
+        if select == 4:
+            res = ct.cur.execute(
+                """SELECT * FROM book"""
+            )
+            for i in res:
+                print(i)        
 class writer():
     def vorodi():
         name = input('Enter the writer name : ')
@@ -153,6 +184,38 @@ class writer():
             )
         ct.db.commit()
         ct.db.close()
+    def select():
+        print('What do you want to view : ')
+        print('name --> 1')
+        print('book --> 2')
+        print('age --> 3')
+        print('all --> 4')
+        select = int(input('Enter the number(1/2/3/4) : '))
+        os.system('cls')
+        if select == 1:
+            res = ct.cur.execute(
+                """SELECT name FROM writer"""
+            )
+            for i in res:
+                print(i)
+        if select == 2:
+            res = ct.cur.execute(
+                """SELECT book FROM writer"""
+            )
+            for i in res:
+                print(i)        
+        if select == 3:
+            res = ct.cur.execute(
+                """SELECT age FROM writer"""
+            )
+            for i in res:
+                print(i)
+        if select == 4:
+            res = ct.cur.execute(
+                """SELECT * FROM writer"""
+            )
+            for i in res:
+                print(i)   
 class member():
     def vorodi():
         name = input('Enter your name : ')
@@ -215,7 +278,38 @@ class member():
             )
         ct.db.commit()
         ct.db.close()
-
+    def select():
+        print('What do you want to view : ')
+        print('name --> 1')
+        print('id --> 2')
+        print('number --> 3')
+        print('all --> 4')
+        select = int(input('Enter the number(1/2/3/4) : '))
+        os.system('cls')
+        if select == 1:
+            res = ct.cur.execute(
+                """SELECT name FROM member"""
+            )
+            for i in res:
+                print(i)
+        if select == 2:
+            res = ct.cur.execute(
+                """SELECT id FROM member"""
+            )
+            for i in res:
+                print(i)        
+        if select == 3:
+            res = ct.cur.execute(
+                """SELECT number FROM member"""
+            )
+            for i in res:
+                print(i)
+        if select == 4:
+            res = ct.cur.execute(
+                """SELECT * FROM member"""
+            )
+            for i in res:
+                print(i)
 
 class main():
     def __init__(self):    
@@ -225,7 +319,15 @@ class main():
         first_move = int(input('Enter the number(1/2) : '))
         os.system('cls')
         if first_move == 1:
-            pass
+            print('view data --> 1')
+            what_request = int(input('Enter the number(1) : '))
+            os.system('cls')
+            if what_request == 1:
+                print('book --> 1' + '\n' + 'writer --> 2' + '\n' + 'member --> 3')
+                view = int(input('Enter the number(1/2/3) : '))
+                os.system('cls')
+                if view == 1:
+                    book.select()
         elif first_move == 2:
             print('add data --> 1')
             print('update data --> 2')
