@@ -121,7 +121,9 @@ class book():
                 """SELECT * FROM book"""
             )
             for i in res:
-                print(i)        
+                print(i)
+        ct.db.close()
+                
 class writer():
     def vorodi():
         name = input('Enter the writer name : ')
@@ -215,7 +217,9 @@ class writer():
                 """SELECT * FROM writer"""
             )
             for i in res:
-                print(i)   
+                print(i)
+        ct.db.close()
+           
 class member():
     def vorodi():
         name = input('Enter your name : ')
@@ -310,6 +314,7 @@ class member():
             )
             for i in res:
                 print(i)
+        ct.db.close()
 
 class main():
     def __init__(self):    
@@ -332,8 +337,6 @@ class main():
                     writer.select()
                 elif view == 3:
                     member.select()
-
-
 
         elif first_move == 2:
             print('add data --> 1')
@@ -374,7 +377,3 @@ class main():
 
 a = main()
 a.__init__
-b = input('bezan : ')
-if b == 'yes':
-    b = main()
-    b.__init__
