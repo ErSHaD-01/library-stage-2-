@@ -259,6 +259,10 @@ class main():
                 os.system('cls')
                 if delete == 1:
                     book.delete()
+                elif delete == 2:
+                    writer.delete()
+                elif delete == 3:
+                    member.delete()        
 
 a = main()
 a.__init__
