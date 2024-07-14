@@ -91,7 +91,6 @@ class book():
         ct.db.commit()
         ct.db.close()        
 
-
 class writer():
     def vorodi():
         name = input('Enter the writer name : ')
