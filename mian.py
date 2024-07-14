@@ -328,6 +328,10 @@ class main():
                 os.system('cls')
                 if view == 1:
                     book.select()
+                elif view == 2:
+                    writer.select()
+                elif view == 3:
+                    member.select()        
         elif first_move == 2:
             print('add data --> 1')
             print('update data --> 2')
