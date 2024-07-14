@@ -90,7 +90,6 @@ class book():
             )    
 
 
-
 class writer():
     def vorodi():
         name = input('Enter the writer name : ')
@@ -166,5 +165,52 @@ class member():
             )      
         ct.db.commit()
         ct.db.close()
+
+
+
+class main():
+    def __init__(self):    
+        ct()
+        print('option --> 1')
+        print('action --> 2')
+        first_move = int(input('Enter the number(1/2) : '))
+        os.system('cls')
+        if first_move == 1:
+            pass
+        elif first_move == 2:
+            print('add data --> 1')
+            print('update data --> 2')
+            print('delete data --> 3')
+            add_or_update_or_delelet = int(input('Enter the number(1/2) : '))
+            os.system('cls')
+            if add_or_update_or_delelet == 1:
+                print('book --> 1' + '\n' + 'writer --> 2' + '\n' + 'member --> 3')
+                add = int(input('Enter the number(1/2/3) : '))
+                os.system('cls')
+                if add == 1:
+                    book.vorodi()
+                elif add == 2:
+                    writer.vorodi()
+                elif add == 3:
+                    member.vorodi()
+            elif add_or_update_or_delelet == 2:
+                print('book --> 1' + '\n' + 'writer --> 2' + '\n' + 'member --> 3')
+                update = int(input('Enter the number(1/2/3) : '))
+                os.system('cls')
+                if update == 1:
+                    book.update()
+                elif update == 2:
+                    writer.update()
+                elif update == 3:
+                    member.update()        
+            elif add_or_update_or_delelet == 3:
+                print('book --> 1' + '\n' + 'writer --> 2' + '\n' + 'member --> 3')
+                delete = int(input('Enter the number(1/2/3) : '))
+                os.system('cls')
+                if delete == 1:
+                    book.delete()
+
+a = main()
+a.__init__
 
 
