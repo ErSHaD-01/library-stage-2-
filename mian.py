@@ -129,7 +129,31 @@ class writer():
             )      
         ct.db.commit()
         ct.db.close()
-
+    def delete():
+        print('What do you want to delete : ')
+        print('name --> 1')
+        print('book --> 2')
+        print('age --> 3')
+        delete = int(input('Enter the number(1/2/3) : '))
+        os.system('cls')
+        delete_val = input('Enter the delete value : ')
+        if delete == 1:
+            ct.cur.execute(
+                "DELETE FROM writer WHERE name=?",
+                (delete_val,)
+            )
+        if delete == 2:
+            ct.cur.execute(
+                "DELETE FROM writer WHERE book=?",
+                (delete_val,)
+            )
+        if delete == 3:
+            ct.cur.execute(
+                "DELETE FROM writer WHERE age=?",
+                (delete_val,)
+            )
+        ct.db.commit()
+        ct.db.close()
 class member():
     def vorodi():
         name = input('Enter your name : ')
@@ -167,7 +191,31 @@ class member():
             )      
         ct.db.commit()
         ct.db.close()
-
+    def delete():
+        print('What do you want to delete : ')
+        print('name --> 1')
+        print('id --> 2')
+        print('number --> 3')
+        delete = int(input('Enter the number(1/2/3) : '))
+        os.system('cls')
+        delete_val = input('Enter the delete value : ')
+        if delete == 1:
+            ct.cur.execute(
+                "DELETE FROM member WHERE name=?",
+                (delete_val,)
+            )
+        if delete == 2:
+            ct.cur.execute(
+                "DELETE FROM member WHERE id=?",
+                (delete_val,)
+            )
+        if delete == 3:
+            ct.cur.execute(
+                "DELETE FROM member WHERE number=?",
+                (delete_val,)
+            )
+        ct.db.commit()
+        ct.db.close()
 
 
 class main():
