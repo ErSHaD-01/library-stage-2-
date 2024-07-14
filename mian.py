@@ -331,7 +331,10 @@ class main():
                 elif view == 2:
                     writer.select()
                 elif view == 3:
-                    member.select()        
+                    member.select()
+
+                    
+                            
         elif first_move == 2:
             print('add data --> 1')
             print('update data --> 2')
