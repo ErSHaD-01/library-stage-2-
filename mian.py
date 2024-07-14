@@ -88,3 +88,83 @@ class book():
                 "DELETE FROM book WHERE year=?",
                 (delete_val)
             )    
+
+
+
+class writer():
+    def vorodi():
+        name = input('Enter the writer name : ')
+        book = input('Enter the writer books : ')
+        age = input('Enter the writer age : ')
+        ct.cur.execute(
+            """INSERT INTO writer(name , book , age) VALUES(? , ? , ?)""",
+            (name , book , age)
+        )
+        ct.db.commit()
+        ct.db.close()
+    def update():
+        print('What do you want to update : ')
+        print('name --> 1')
+        print('book --> 2')
+        print('age --> 3')
+        update = int(input('Enter the number(1/2/3) : '))
+        os.system('cls')
+        defualt_val = input('Enter the defualt value : ')    
+        update_val = input('Enter the update value : ')    
+        if update == 1:
+            ct.cur.execute(
+                "UPDATE writer SET name=? WHERE name=?",
+                (update_val , defualt_val)
+            )
+        if update == 2:
+            ct.cur.execute(
+                "UPDATE writer SET book=? WHERE book=?",
+                (update_val , defualt_val)
+            )        
+        if update == 3:
+            ct.cur.execute(
+                "UPDATE writer SET age=? WHERE age=?",
+                (update_val , defualt_val)
+            )      
+        ct.db.commit()
+        ct.db.close()
+
+class member():
+    def vorodi():
+        name = input('Enter your name : ')
+        id_ = input('Enter your id : ')
+        number = input('Enter your number : ')
+        ct.cur.execute(
+            """INSERT INTO member(name , id , number) VALUES(? , ? , ?)""",
+            (name , id_ , number)
+        )
+        ct.db.commit()
+        ct.db.close()
+    def update():
+        print('What do you want to update : ')
+        print('name --> 1')
+        print('id --> 2')
+        print('number --> 3')
+        update = int(input('Enter the number(1/2/3) : '))
+        os.system('cls')
+        defualt_val = input('Enter the defualt value : ')    
+        update_val = input('Enter the update value : ')    
+        if update == 1:
+            ct.cur.execute(
+                "UPDATE member SET name=? WHERE name=?",
+                (update_val , defualt_val)
+            )
+        if update == 2:
+            ct.cur.execute(
+                "UPDATE member SET id=? WHERE id=?",
+                (update_val , defualt_val)
+            )        
+        if update == 3:
+            ct.cur.execute(
+                "UPDATE member SET number=? WHERE number=?",
+                (update_val , defualt_val)
+            )      
+        ct.db.commit()
+        ct.db.close()
+
+
