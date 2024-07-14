@@ -76,18 +76,20 @@ class book():
         if delete == 1:
             ct.cur.execute(
                 "DELETE FROM book WHERE name=?",
-                (delete_val)
+                (delete_val,)
             )
         if delete == 2:
             ct.cur.execute(
                 "DELETE FROM book WHERE writer=?",
-                (delete_val)
+                (delete_val,)
             )
         if delete == 3:
             ct.cur.execute(
                 "DELETE FROM book WHERE year=?",
-                (delete_val)
-            )    
+                (delete_val,)
+            )
+        ct.db.commit()
+        ct.db.close()        
 
 
 class writer():
