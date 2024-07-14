@@ -27,3 +27,64 @@ class ct():
         number INTEGER(11)
     )"""
     )
+
+class book():
+    def vorodi():
+        name = input('Enter the book name : ')
+        writer = input('Enter the writer name : ')
+        year = input('Enter the published yera : ')
+        ct.cur.execute(
+            """INSERT INTO book(name , writer , year) VALUES(? , ? , ?)""",
+            (name , writer , year)
+        )
+        ct.db.commit()
+        ct.db.close()
+    def update():
+        print('What do you want to update : ')
+        print('name --> 1')
+        print('writer --> 2')
+        print('year --> 3')
+        update = int(input('Enter the number(1/2/3) : '))
+        os.system('cls')
+        defualt_val = input('Enter the defualt value : ')    
+        update_val = input('Enter the update value : ')    
+        if update == 1:
+            ct.cur.execute(
+                "UPDATE book SET name=? WHERE name=?",
+                (update_val , defualt_val)
+            )
+        if update == 2:
+            ct.cur.execute(
+                "UPDATE book SET writer=? WHERE writer=?",
+                (update_val , defualt_val)
+            )        
+        if update == 3:
+            ct.cur.execute(
+                "UPDATE book SET year=? WHERE year=?",
+                (update_val , defualt_val)
+            )      
+        ct.db.commit()
+        ct.db.close()
+    def delete():
+        print('What do you want to delete : ')
+        print('name --> 1')
+        print('writer --> 2')
+        print('year --> 3')
+        delete = int(input('Enter the number(1/2/3) : '))
+        os.system('cls')
+        delete_val = input('Enter the delete value : ')
+        if delete == 1:
+            ct.cur.execute(
+                "DELETE FROM book WHERE name=?",
+                (delete_val)
+            )
+        if delete == 2:
+            ct.cur.execute(
+                "DELETE FROM book WHERE writer=?",
+                (delete_val)
+            )
+        if delete == 3:
+            ct.cur.execute(
+                "DELETE FROM book WHERE year=?",
+                (delete_val)
+            )    
