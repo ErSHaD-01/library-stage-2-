@@ -15,7 +15,7 @@ class ct():
     cur.execute(
     """CREATE TABLE IF NOT EXISTS writer(
         name TEXT,
-        book TEXT,
+        id INTEGER,
         age INTEGER
     )"""
     )
@@ -127,10 +127,10 @@ class book():
 class writer():
     def vorodi():
         name = input('Enter the writer name : ')
-        book = input('Enter the writer books : ')
+        book = input('Enter the writer id : ')
         age = input('Enter the writer age : ')
         ct.cur.execute(
-            """INSERT INTO writer(name , book , age) VALUES(? , ? , ?)""",
+            """INSERT INTO writer(name , id , age) VALUES(? , ? , ?)""",
             (name , book , age)
         )
         ct.db.commit()
@@ -138,7 +138,7 @@ class writer():
     def update():
         print('What do you want to update : ')
         print('name --> 1')
-        print('book --> 2')
+        print('id --> 2')
         print('age --> 3')
         update = int(input('Enter the number(1/2/3) : '))
         os.system('cls')
@@ -151,7 +151,7 @@ class writer():
             )
         if update == 2:
             ct.cur.execute(
-                "UPDATE writer SET book=? WHERE book=?",
+                "UPDATE writer SET id=? WHERE id=?",
                 (update_val , defualt_val)
             )        
         if update == 3:
@@ -164,7 +164,7 @@ class writer():
     def delete():
         print('What do you want to delete : ')
         print('name --> 1')
-        print('book --> 2')
+        print('id --> 2')
         print('age --> 3')
         delete = int(input('Enter the number(1/2/3) : '))
         os.system('cls')
@@ -176,7 +176,7 @@ class writer():
             )
         if delete == 2:
             ct.cur.execute(
-                "DELETE FROM writer WHERE book=?",
+                "DELETE FROM writer WHERE id=?",
                 (delete_val,)
             )
         if delete == 3:
@@ -189,7 +189,7 @@ class writer():
     def select():
         print('What do you want to view : ')
         print('name --> 1')
-        print('book --> 2')
+        print('id --> 2')
         print('age --> 3')
         print('all --> 4')
         select = int(input('Enter the number(1/2/3/4) : '))
@@ -202,7 +202,7 @@ class writer():
                 print(i)
         if select == 2:
             res = ct.cur.execute(
-                """SELECT book FROM writer"""
+                """SELECT id FROM writer"""
             )
             for i in res:
                 print(i)        
@@ -316,6 +316,23 @@ class member():
                 print(i)
         ct.db.close()
 
+def fix_serch(txt):
+    if txt.startswith("('"):
+        txt = txt.replace("('" , '')
+    if txt.endswith("',)"):     
+        txt = txt.replace("',)" , '')
+    return txt
+def search_option():
+    search = input('Enter the writer name : ')
+    res = ct.cur.execute(
+        """SELECT name FROM book WHERE writer=?""",
+        (fix_serch(search),)
+    )
+    for i in res:
+        i = str(i)
+        print(fix_serch(i) , end = ' , ')
+    ct.db.close()    
+
 class main():
     def __init__(self):    
         ct()
@@ -325,6 +342,7 @@ class main():
         os.system('cls')
         if first_move == 1:
             print('view data --> 1')
+            print('search --> 2')
             what_request = int(input('Enter the number(1) : '))
             os.system('cls')
             if what_request == 1:
@@ -337,6 +355,8 @@ class main():
                     writer.select()
                 elif view == 3:
                     member.select()
+            if what_request == 2:
+                search_option()                        
 
         elif first_move == 2:
             print('add data --> 1')
